@@ -26,12 +26,27 @@ void read_inst(std::vector<int>& inst)
     }
 }
 
+int equation(int noun, int verb)
+{
+    return (((noun * 27) + 52) * 10000) + (625 + verb);
+}
+
 int main()
 {
     std::vector<int> inst;
     read_inst(inst);
 
     int pc = 0;
+
+    // Set noun and verb
+    int noun = 71;
+    int verb = 95;
+
+    std::cout << "Equation yields " << equation(noun, verb) << " for noun(" << noun << 
+        ") and verb(" << verb << ")" << std::endl;
+
+    inst[1] = noun;
+    inst[2] = verb;
 
     // Loop
     while (inst.at(pc) != Opcode::HLT) {
